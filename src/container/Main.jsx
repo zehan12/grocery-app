@@ -1,8 +1,9 @@
 import { Fragment, useState } from "react";
 import Header from "../components/Header";
 import Tabs from "../components/Tabs";
-import Form from "../components/UserMangaement/Form";
-import Table from "../components/UserMangaement/Table";
+import Form from "../components/Form";
+import Table from "../components/Table";
+import Content from "../components/Content";
 
 const tabs = [
   { name: "User Management", code: "UM" },
@@ -34,19 +35,23 @@ const products = [
 
 const Main = () => {
   const [activeTab, setActiveTab] = useState("User Management");
-  console.log(activeTab)
+
+  const dataItem = () => {};
+
   return (
     <Fragment>
       <Header />
       <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
-      <div className="mt-10 flex">
-        <Table active={activeTab} data={
-          activeTab === "User Mangement" ? people :
-          activeTab === "Product Details" ? products :
-          people
-        } />
-        <Form />
-      </div>
+        <Content
+          active={activeTab}
+          data={
+            activeTab === "User Mangement"
+              ? people
+              : activeTab === "Product Details"
+              ? products
+              : people
+          }
+        />
     </Fragment>
   );
 };
