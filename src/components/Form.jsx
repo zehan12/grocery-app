@@ -39,7 +39,7 @@ const Form = (props) => {
                     {field}
                   </label>
                   <input
-                    className="border py-1 px-1 text-grey-darkest"
+                    className={`border py-1 px-1 focus:outline-none ${data[0][field] === state[field] ? "text-black" : "text-green-600" }`}
                     type="text"
                     onChange={(e) => handleChange(e)}
                     name={field}
