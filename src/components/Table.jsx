@@ -1,5 +1,5 @@
 const Table = (props) => {
-  const { active, data, fields } = props;
+  const { active, data, fields, activeID, editID, handleActiveItem } = props;
   return (
     <div className="px-4 sm:px-6 lg:px-8 mx-auto">
       {fields.length !== 0 ? (
@@ -41,15 +41,26 @@ const Table = (props) => {
                   </thead>
                   <tbody className="divide-y divide-gray-200  bg-white">
                     {data.map((item) => (
-                      <tr key={item} className="divide-x divide-gray-200">
+                      <tr
+                        onClick={() => handleActiveItem(item["ID"])}
+                        key={item}
+                        className="divide-x divide-gray-200"
+                      >
                         {fields.map((field) => (
                           <td
                             key={field}
                             className="whitespace-nowrap py-4 px-9 text-sm font-medium text-gray-900 sm:pl-1 ml-3"
                           >
                             {item[field] === undefined ? (
-                              <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold ml-3 py-1 px-1 ">
-                                Edit
+                              <button
+                                className={`text-white font-bold ml-3 py-1 px-1 
+                              ${
+                                item["ID"] === activeID
+                                  ? "bg-green-500 hover:bg-green-400"
+                                  : "bg-blue-500 hover:bg-blue-400"
+                              }`}
+                              >
+                                {item["ID"] === activeID ? "Active" : "Edit"}
                               </button>
                             ) : (
                               item[field]

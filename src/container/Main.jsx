@@ -15,8 +15,26 @@ const tabs = [
 
 const people = [
   {
-    ID: "xxxxxxxxxxx",
+    ID: "1",
     Name: "Zehan Khan",
+    Email: "zehan@gmail.com",
+    DOJ: "oct",
+    Address: "78 OTC",
+    Phone: 9024172911,
+    National_ID: "xxxxxxxxxx",
+  },
+  {
+    ID: "2",
+    Name: "Dan",
+    Email: "zehan@gmail.com",
+    DOJ: "oct",
+    Address: "78 OTC",
+    Phone: 9024172911,
+    National_ID: "xxxxxxxxxx",
+  },
+  {
+    ID: "3",
+    Name: "Andrew",
     Email: "zehan@gmail.com",
     DOJ: "oct",
     Address: "78 OTC",

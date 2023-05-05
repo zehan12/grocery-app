@@ -17,6 +17,9 @@ const productFields = ["ID", "Name", "category_ID", "action"];
 
 const Content = (props) => {
   const [fields, setFields] = useState("");
+  const [activeItem, setActiveItem] = useState(null);
+  const [activeID, setActiveID] = useState(0);
+  const [editID, setEditID] = useState(0);
 
   const handleDetails = () => {
     switch (true) {
@@ -39,12 +42,24 @@ const Content = (props) => {
     handleDetails();
   }, [props.active]);
 
+  const handleActiveItem = (id) => {
+    const item = props.data.filter((v) => v.ID === id);
+    setActiveItem(item);
+    setActiveID(id);
+  };
+
   return (
     <Fragment>
       <div className="mt-10 flex">
-        <Table active={props.active} fields={fields} data={props.data} />
-        <Form  active={props.active} fields={fields} data={props.data} />
-        </div>
+        <Table
+          active={props.active}
+          fields={fields}
+          data={props.data}
+          handleActiveItem={handleActiveItem}
+          activeID={activeID}
+        />
+        <Form active={props.active} fields={fields} data={activeItem} editID={editID} />
+      </div>
     </Fragment>
   );
 };
